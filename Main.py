@@ -1,5 +1,5 @@
 # Our Class that will be used to Emails
-import EmailSender
+from EmailSender import *
 
 
 # This function will read the config file
@@ -57,6 +57,7 @@ if __name__ == "__main__":
 
         # Add a single Recipent
         receiver = str(input("Enter Receiver Email Address: "))
+        email_sender.add_recipient(receiver)
 
         # Option to Add another recipent
         contReceiver = int(input("Do you want to Add another? (1/0): "))
