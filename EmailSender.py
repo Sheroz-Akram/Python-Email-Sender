@@ -1,6 +1,7 @@
 import smtplib
 from email.message import EmailMessage
 
+
 class EmailSender:
     def __init__(self, smtp_server, smtp_port, username, password):
         # Initialize the EmailSender with SMTP server details and authentication credentials.
