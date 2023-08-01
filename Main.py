@@ -1,14 +1,38 @@
 # Our Class that will be used to Emails
 import EmailSender
 
+
+# This function will read the config file
+def read_email_config(filename):
+    config = {}
+    try:
+        with open(filename, 'r') as file:
+            lines = file.readlines()
+            for line in lines:
+                # Ignore lines starting with '#' (comments) and empty lines
+                if not line.strip().startswith("#") and '=' in line:
+                    key, value = line.strip().split('=')
+                    config[key.strip()] = value.strip().strip("'")
+        return (
+            config.get('smtp_server'),
+            config.get('smtp_port'),
+            config.get('username'),
+            config.get('password')
+        )
+    except FileNotFoundError:
+        print(f"Error: The file '{filename}' not found.")
+        return None
+    except Exception as e:
+        print(f"Error while reading configuration: {e}")
+        return None
+
+
 # This is the Main Demo
 if __name__ == "__main__":
 
     # Add Your Email Configuration
-    smtp_server = 'your_smtp_server'
-    smtp_port = 587
-    username = 'your_username'
-    password = 'your_password'
+    config_filename = 'config.txt'
+    smtp_server, smtp_port, username, password = read_email_config(config_filename)
 
     # Choose to select configure on runtime
     configureOption = int(input("Configure Server Details? (1/0): "))

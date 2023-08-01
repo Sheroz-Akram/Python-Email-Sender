@@ -1,0 +1,5 @@
+# Add Your Email Configuration
+smtp_server = 'your_smtp_server'
+smtp_port = 587
+username = 'your_username'
+password = 'your_password'
